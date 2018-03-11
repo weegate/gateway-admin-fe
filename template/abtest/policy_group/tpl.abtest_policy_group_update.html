@@ -1,0 +1,72 @@
+{{define "body_content"}}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                策略组管理<small>&nbsp;更新策略组</small>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="clearfix">
+        <form  id="policy_group_form" action="#" >
+            <input type="hidden"  id="policy_group_id" name="policy_group_id">
+            <div class="form-group">
+                <label for="name">策略组名</label>
+                <input type="text" class="form-control" id="policy_group_name" name="policy_group_name" placeholder="策略组别名">
+            </div>
+            <div class="form-group">
+                <label for="name">所选策略</label>
+                <select id="policy_group_policyIds" multiple="multiple" name="policy_group_policyIds" class="form-control" placeholder="可多选">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">审核</label>
+                <select id="policy_group_status" name="policy_group_status"  class="form-control">
+                    <option value="0">通过</option>
+                    <option value="1">未审核</option>
+                    <option value="2">拒绝</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">删除</label>
+                <select id="policy_group_isdelete" name="policy_group_isDelete"  class="form-control">
+                    <option value="0">有效</option>
+                    <option value="1">删除</option>
+                </select>
+            </div>
+            <input type="submit"  class="btn btn-default" value="更新策略组">
+            <div id="tips" style="font-size: small;">tips: 如果更新没有提示,说明所填数据验证不通过，导致更新失败，请check!</div>
+        </form>
+    </div>
+</div>
+
+<div class="row"></div>
+
+<script src="/static/js/common/common-config.js"></script>
+<script src="/static/js/abtest/policy_group.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#policy_group_policy_groupIds").select2({ });
+        policy_group.getAvailablePolicies();
+        
+        var id = getUrlParam("id");
+        if($.trim(id).length>0){
+            policy_group.get(id);
+        }else{
+            alert("request param need id")
+        }
+        
+        $("#policy_group_form").validate({
+            rules : policy_group_rules,
+            messages : policy_group_messages,
+            submitHandler : function(form) {
+                policy_group.update();
+                //form.submit();
+            }
+        });
+    });
+</script>
+{{end}}

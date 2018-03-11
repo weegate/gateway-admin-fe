@@ -1,0 +1,9 @@
+*~
+*.o
+*.swp
+*.swo
+*.log
+*.pid
+*.back
+./fe
+

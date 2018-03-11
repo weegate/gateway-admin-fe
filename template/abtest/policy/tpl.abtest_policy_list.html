@@ -1,0 +1,102 @@
+{{define "body_content"}}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                策略管理<small>&nbsp;策略列表</small>
+            </h3>
+        </div>
+    </div>
+</div>
+<!--search-->
+<!--div class="container-fluid">
+    <div class="clearfix">
+        <form class="form-inline" id="search_basic_form" action="post">
+            <div class="form-group">
+                <label for="exampleInputName2">API名称</label>
+                <input type="text" class="form-control" id="search_name" placeholder="api">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">类别</label>
+                <select id="search_type" class="form-control">
+	                <option value="">不限</option>
+                    <option value="1">service服务</option>
+                    <option value="2">interface接口</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">状态</label>
+                <select id="search_status" class="form-control">
+	                <option value="">不限</option>
+                    <option value="0">通过</option>
+                    <option value="1">未审核</option>
+                    <option value="2">拒绝</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">是否删除</label>
+                <select id="search_isDelete" class="form-control">
+                    <option value="0">有效</option>
+                    <option value="1">删除</option>
+                </select>
+            </div>
+        </form>
+        <br>
+        <div class="row-fluid">
+            <button type="button" class="btn btn-primary" id="form_search_submit" onclick="api.search();return;">查找</button>
+        </div>
+    </div>
+</div-->
+<!--table-->
+<div class="container-fluid">
+    <div class="portlet box blue">
+
+        <div class="portlet-body">
+            <div role="grid" class="dataTables_wrapper form-inline" id="sample_3_wrapper">
+                <table id="tableID" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>策略名称</th>
+                        <th>分流模型</th>
+                        <th>分流数据</th>
+                        <th>创建时间</th>
+                        <th>修改时间</th>
+                        <th>审核状态</th>
+                        <th>是否删除</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableTbody"></tbody>
+                </table>
+
+                <div id="pageIndex"></div>
+            </div>
+            <nav>
+                <ul class="pager" id="pager"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="row"></div>
+<script src="/static/js/common/common-config.js"></script>
+<script src="/static/js/abtest/policy.js"></script>
+<script type="text/javascript">
+    var offset = 0;
+    var pageNum = 1;
+    var limit  = 30;
+    var count  = 1;//总数不要超过5000
+    var isFirstSerach = 0;
+    var isFirstList = true;
+    var isFirstSearch = true;
+    var isSerach = false;
+    $(document).ready(function () {
+        policy.init();
+        /*$('.info-info').each(function(index){
+			$(this).popover();
+		});*/
+    });
+</script>
+{{end}}

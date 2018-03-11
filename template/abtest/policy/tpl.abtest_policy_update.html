@@ -1,0 +1,75 @@
+{{define "body_content"}}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                策略管理<small>&nbsp;更新策略</small>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="clearfix">
+        <form  id="policy_form" action="#" >
+            <input type="hidden"  id="policy_id" name="policy_id">
+            <div class="form-group">
+                <label for="name">策略名</label>
+                <input type="text" class="form-control" id="policy_name" name="policy_name" placeholder="策略别名">
+            </div>
+            <div class="form-group">
+                <label for="name">策略模型</label>
+                <select id="policy_divmodel" name="policy_divmodel" class="form-control">
+                    <option value="request_body_countryCode">按照请求countryCode分流</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <!--todo user json-editor form;  http://jeremydorn.com/json-editor/ -->
+                <label for="name">策略数据schema</label>
+                <textarea rows="5" cols="20" class="form-control" id="policy_divdata" name="policy_divdata" placeholder="json data"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">审核</label>
+                <select id="policy_status" name="policy_status"  class="form-control">
+                    <option value="0">通过</option>
+                    <option value="1">未审核</option>
+                    <option value="2">拒绝</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">删除</label>
+                <select id="policy_isdelete" name="policy_isdelete"  class="form-control">
+                    <option value="0">有效</option>
+                    <option value="1">删除</option>
+                </select>
+            </div>
+            <input type="submit"  class="btn btn-default" value="更新策略">
+            <div id="tips" style="font-size: small;">tips: 如果更新没有提示,说明所填数据验证不通过，导致更新失败，请check!</div>
+        </form>
+    </div>
+</div>
+
+<div class="row"></div>
+
+<script src="/static/js/common/common-config.js"></script>
+<script src="/static/js/abtest/policy.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var id = getUrlParam("id");
+        if($.trim(id).length>0){
+            policy.get(id);
+        }else{
+            alert("request param need id")
+        }
+        
+        $("#policy_form").validate({
+            rules : policy_rules,
+            messages : policy_messages,
+            submitHandler : function(form) {
+                policy.update();
+                //form.submit();
+            }
+        });
+    });
+</script>
+{{end}}

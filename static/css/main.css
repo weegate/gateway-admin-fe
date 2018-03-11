@@ -1,0 +1,218 @@
+body {
+    padding-top: 50px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.nav-sidebar > .active > a {
+    color: #fff;
+    background-color: #428bca;
+}
+
+/*
+ * Main content
+ */
+.main {
+    padding: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.main .page-header {
+    margin-top: 0;
+}
+
+.main .api_form {
+    margin-left: 10px;
+    width: 80%;
+}
+
+#div_api_info {
+    width: 800px;
+}
+
+.btn_submit {
+    text-align: right;
+}
+
+.main .div_res {
+    margin-top: 50px;
+    margin-left: 10px;
+    width: 80%;
+}
+
+@media ( max-width : 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #e9ebf3;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ecdbff;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+        .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ecdbff;
+        background-color: #ff3e41;
+    }
+}
+
+.zTreeDemoBackground {
+    text-align: left;
+}
+
+.ztree {
+    margin-top: 10px;
+    background: #fff;
+    /*background: #f0f6e4;*/
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.log {
+    border: 1px solid #617775;
+    background: #f0f6e4;
+    width: 300px;
+    height: 170px;
+    overflow: hidden;
+}
+
+.log.small {
+    height: 45px;
+}
+
+.log li {
+    color: #666;
+    list-style: none;
+    padding-left: 10px;
+}
+
+.log .dark {
+    background-color: #E3E3E3;
+}
+
+/* ruler */
+.ruler {
+    height: 20px;
+    width: 220px;
+    background-color: #f0f6e4;
+    border: 1px solid #333;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.ruler .cursor {
+    height: 20px;
+    width: 30px;
+    background-color: #3C6E31;
+    color: #fff;
+    text-align: right;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+#tablelist {
+    position: absolute;
+    right: 7px;
+    top: 20px;
+    background-color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+#main-nav {
+    margin-left: 1px;
+}
+
+#main-nav.nav-tabs.nav-stacked > li > a {
+    padding: 10px 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4A515B;
+    background: #E9E9E9;
+    background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FAFAFA),
+        color-stop(100%, #E9E9E9));
+    background: -webkit-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+    background: -o-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+    background: -ms-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+    background: linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = "#FAFAFA", endColorstr = "#E9E9E9");
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = "#FAFAFA", endColorstr = "#E9E9E9")";
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+}
+
+#main-nav.nav-tabs.nav-stacked > li > a > span {
+    color: #4A515B;
+}
+
+#main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover {
+    color: #FFF;
+    background: #3C4049;
+    background: -moz-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4A515B), color-stop(100%, #3C4049));
+    background: -webkit-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+    background: -o-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+    background: -ms-linear-gradient(top, #4A515B 0%, #3C4049 100%);
+    background: linear-gradient(top, #4A515B 0%, #3C4049 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = "#4A515B", endColorstr = "#3C4049");
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = "#4A515B", endColorstr = "#3C4049")";
+    border-color: #2B2E33;
+}
+
+#main-nav.nav-tabs.nav-stacked > li.active > a,
+#main-nav.nav-tabs.nav-stacked > li > a:hover > span {
+    color: #FFF;
+}
+
+#main-nav.nav-tabs.nav-stacked > li {
+    margin-bottom: 4px;
+}
+
+/*定义二级菜单样式*/
+.secondmenu a {
+    font-size: 14px;
+    color: #4A515B;
+    text-align: center;
+}
+
+.navbar-static-top {
+    background-color: #212121;
+    margin-bottom: 5px;
+}
+
+.navbar-brand {
+    background: url("") no-repeat 10px 8px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 50px;
+    color: #fff;
+}

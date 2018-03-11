@@ -1,0 +1,88 @@
+{{define "body_content"}}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                策略运行时管理<small>&nbsp;更新策略运行时</small>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="clearfix">
+        <form  id="runtime_form" action="#" >
+            <input type="hidden"  id="runtime_id" name="runtime_id">
+            <div class="form-group">
+                <label for="name">策略运行时服务名称</label>
+                <input type="text" class="form-control" id="runtime_serverName" name="runtime_serverName" placeholder="策略运行时，所影响的服务">
+            </div>
+            <div class="form-group">
+                <label for="name">所选单个策略</label>
+                <select id="runtime_policyId" name="runtime_policyId" class="form-control" placeholder="请选择一个策略">
+                    <option value="" >---请选择一个策略---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">所选策略组</label>
+                <select id="runtime_groupId" name="runtime_groupId" class="form-control" placeholder="请选择一个策略组">
+                    <option value="" >---请选择一个策略组---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">状态</label>
+                <select id="runtime_status" name="runtime_status"  class="form-control">
+                    <option value="0">通过</option>
+                    <option value="1">未审核</option>
+                    <option value="2">拒绝</option>
+                    <option value="3">下线</option>
+                    <option value="4">上线</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">是否删除</label>
+                <select id="runtime_isDelete" name="runtime_isDelete"  class="form-control">
+                    <option value="0">有效</option>
+                    <option value="1">删除</option>
+                </select>
+            </div>
+            <input type="submit"  class="btn btn-default" value="更新策略">
+            <div id="tips" style="font-size: small;">tips: 如果更新没有提示,说明所填数据验证不通过，导致更新失败，请check!</div>
+        </form>
+    </div>
+</div>
+
+<div class="row"></div>
+
+<script src="/static/js/common/common-config.js"></script>
+<script src="/static/js/abtest/runtime.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#runtime_policyId").select2({
+            placeholder: "请选择一个策略",
+        });
+        runtime.getAvailablePolicies();
+
+        $("#runtime_groupId").select2({
+            placeholder: "请选择一个策略",
+        });
+        runtime.getAvailableGroups();
+        
+        var id = getUrlParam("id");
+        if($.trim(id).length>0){
+            runtime.get(id);
+        }else{
+            alert("request param need id")
+        }
+        
+        $("#runtime_form").validate({
+            rules : runtime_rules,
+            messages : runtime_messages,
+            submitHandler : function(form) {
+                runtime.update();
+                //form.submit();
+            }
+        });
+    });
+</script>
+{{end}}
